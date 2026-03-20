@@ -1,32 +1,38 @@
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
 
-        if(strs.length < 1) return null
+        // Standard Anagram (sort using charArray) problem
+        //You update the existing key with itself and with the update list
+        //get the current list in the hashmap and update it
+        //call a hash.values() for the solution
+
+        if(strs.length < 1) return null;
 
         HashMap<String,List<String>> hash = new HashMap<>();
 
-        for(String s: strs){
 
-            char[] letter = s.toCharArray();
-            Arrays.sort(letter);
+        for(String s : strs){
+            char[] strChar = s.toCharArray();
+            Arrays.sort(strChar);
+            String key = new String(strChar);
 
-            String word = Arrays.toString(letter);
+            if(hash.containsKey(key)){
+                List<String> current = hash.get(key);
+                current.add(s);
+                hash.put(key,current);
 
-            if(hash.containsKey(word)){
-
-                List<String> ls = hash.get(word);
-                ls.add(s);
-                hash.put(word,ls);
             }
             else{
-                List<String> list = new ArrayList<>();
-                list.add(s);
-                hash.put(word,list);
-            }
+                List<String> init = new ArrayList<>();
+                init.add(s);
+                hash.put(key,init);
 
+            }
 
         }
 
+
         return new ArrayList<>(hash.values());
+
     }
 }
