@@ -9,7 +9,6 @@ leetcode/
 ├── easy/
 │   └── two-sum/
 │       ├── Solution.java
-│       └── SolutionTest.java
 ├── medium/
 │   └── longest-substring/
 │       ├── Solution.java
